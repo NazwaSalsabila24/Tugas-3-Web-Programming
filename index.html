@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width:device-width, initial-scale=1.0">
+    <title>Pembayaran SPP Digital</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!--Bagian Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SPP Digital</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-house-fill"></i> Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-clock-history"></i> Riwayat Pembayaran</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-info-circle-fill"></i> Tentang Kami</a>
+                    </li>
+                    <!-- Navbar dengan Menu Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-fill"></i> Akun
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="loginDropdown">
+                            <li><a class="dropdown-item" href="#">Profil</a></li>
+                            <li><a class="dropdown-item" href="#">Pengaturan</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container my-5">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header bg-warning text-white">
+                        <i class="bi bi-cash-coin"></i> Total Pembayaran
+                    </div>
+                    <div class="card-body">
+                        <h2>Rp 10.000.000</h2>
+                        <p>Total pembayaran SPP bulan ini.</p>
+                        <hr>
+                        <p>Jumlah siswa membayar: 150</p>
+                        <p>Jumlah siswa belum membayar: 50</p>
+                        <p>Rata-rata pembayaran: Rp 200.000</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <i class="bi bi-bar-chart-line-fill"></i> Status Siswa Bulanan
+                    </div>
+                    <div class="card-body">
+                        <canvas id="statusChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <i class="bi bi-megaphone-fill"></i> Pengumuman & Jadwal Penting
+                    </div>
+                    <div class="card-body">
+                        <p>Pengumuman penting terkait pembayaran SPP.</p>
+                        <p>Harap perhatikan batas waktu pembayaran.</p>
+                        <hr>
+                        <p>15 Desember 2023: Batas akhir pembayaran SPP.</p>
+                        <p>20 Desember 2023: Pengumuman hasil ujian.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Tables -->
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <i class="bi bi-table"></i> Data Pembayaran
+                    </div>
+                    <div class="card-body">
+                        <table id="paymentData" class="display" style="width:100%;">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Nama Siswa</th>
+                                    <th>Kelas</th>
+                                    <th>Jumlah</th>
+                                    <th>Metode</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2024-11-20</td>
+                                    <td>Nazfan</td>
+                                    <td>X TKRO-1</td>
+                                    <td>Rp 250.000</td>
+                                    <td>Transfer Bank</td>
+                                </tr>
+                                <tr>
+                                    <td>2024-11-19</td>
+                                    <td>Salsabila</td>
+                                    <td>X RPL-2 </td>
+                                    <td>Rp 250.000</td>
+                                    <td>Langsung</td>
+                                </tr>
+                                <tr>
+                                    <td>2024-11-18</td>
+                                    <td>Salwa</td>
+                                    <td>XII RPL-1</td>
+                                    <td>Rp 250.000</td>
+                                    <td>Transfer Bank</td>
+                                </tr>
+                                <tr>
+                                    <td>2024-11-17</td>
+                                    <td>Fatillah</td>
+                                    <td>XI RPL-1</td>
+                                    <td>Rp 250.000</td>
+                                    <td>Langsung</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bagian Footer -->
+    <footer class="bg-primary text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 SPP Digital. All rights reserved.</p>
+            <p>
+                <a href="#" class="text-white"><i class="bi bi-facebook"></i> Facebook</a> |
+                <a href="#" class="text-white"><i class="bi bi-twitter"></i> Twitter</a> |
+                <a href="#" class="text-white"><i class="bi bi-instagram"></i> Instagram</a>
+            </p>
+            <p>Sistem pembayaran SPP digital yang mudah dan aman.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#paymentData').DataTable();
+
+            // Grafik Status Siswa Bulanan
+            var ctxStatus = document.getElementById('statusChart').getContext('2d');
+            var statusChart = new Chart(ctxStatus, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+                    datasets: [{
+                        label: 'Siswa Lunas',
+                        data: [100, 120, 150, 180, 200, 220], // Data dummy
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Siswa Belum Lunas',
+                        data: [50, 40, 30, 20, 10, 5], // Data dummy
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Grafik Status Siswa'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
